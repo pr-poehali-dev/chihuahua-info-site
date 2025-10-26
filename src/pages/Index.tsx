@@ -33,6 +33,7 @@ const Index = () => {
                 { id: "health", label: "Здоровье", icon: "Activity" },
                 { id: "nutrition", label: "Питание", icon: "Apple" },
                 { id: "training", label: "Дрессировка", icon: "Award" },
+                { id: "blog", label: "Блог", icon: "BookOpen" },
                 { id: "gallery", label: "Галерея", icon: "Image" },
                 { id: "contact", label: "Контакты", icon: "Mail" },
               ].map((item) => (
@@ -503,7 +504,118 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="gallery" className="py-20 px-4">
+      <section id="blog" className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12 animate-fade-in">
+            <Badge className="mb-4 bg-indigo-500 text-white">Блог</Badge>
+            <h2 className="text-4xl font-bold mb-4">Советы владельцам</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Полезные статьи и рекомендации по уходу за чихуахуа
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                icon: "Snowflake",
+                title: "Как защитить чихуахуа от холода зимой",
+                date: "15 октября 2024",
+                excerpt: "Чихуахуа очень чувствительны к холоду. Узнайте, как правильно одевать питомца и защитить его здоровье в зимний период.",
+                category: "Уход",
+                color: "blue",
+                readTime: "5 мин"
+              },
+              {
+                icon: "Utensils",
+                title: "5 ошибок в кормлении чихуахуа",
+                date: "12 октября 2024",
+                excerpt: "Неправильное питание может навредить здоровью вашего питомца. Разбираем самые частые ошибки владельцев.",
+                category: "Питание",
+                color: "green",
+                readTime: "7 мин"
+              },
+              {
+                icon: "Baby",
+                title: "Первые дни щенка чихуахуа дома",
+                date: "8 октября 2024",
+                excerpt: "Как подготовить дом к появлению щенка и помочь ему адаптироваться в новой семье. Практическое руководство.",
+                category: "Воспитание",
+                color: "pink",
+                readTime: "10 мин"
+              },
+              {
+                icon: "Stethoscope",
+                title: "Когда нужно срочно к ветеринару",
+                date: "5 октября 2024",
+                excerpt: "Симптомы, которые требуют немедленного обращения к врачу. Важная информация для каждого владельца.",
+                category: "Здоровье",
+                color: "red",
+                readTime: "6 мин"
+              },
+              {
+                icon: "Users",
+                title: "Социализация чихуахуа: с чего начать",
+                date: "1 октября 2024",
+                excerpt: "Правильная социализация поможет вашему питомцу стать уверенным и дружелюбным. Пошаговая инструкция.",
+                category: "Дрессировка",
+                color: "purple",
+                readTime: "8 мин"
+              },
+              {
+                icon: "Scissors",
+                title: "Груминг чихуахуа в домашних условиях",
+                date: "28 сентября 2024",
+                excerpt: "Как правильно ухаживать за шерстью, когтями и зубами вашего чихуахуа дома. Советы профессионалов.",
+                category: "Уход",
+                color: "orange",
+                readTime: "9 мин"
+              },
+            ].map((post, index) => (
+              <Card
+                key={index}
+                className={`hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-${post.color}-200 animate-fade-in cursor-pointer group`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-3">
+                    <Badge variant="outline" className={`text-${post.color}-600 border-${post.color}-300`}>
+                      {post.category}
+                    </Badge>
+                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                      <Icon name="Clock" size={12} />
+                      {post.readTime}
+                    </span>
+                  </div>
+                  <div className={`w-12 h-12 rounded-lg bg-${post.color}-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <Icon name={post.icon as any} className={`text-${post.color}-600`} size={24} />
+                  </div>
+                  <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">{post.title}</CardTitle>
+                  <CardDescription className="text-xs text-muted-foreground flex items-center gap-1">
+                    <Icon name="Calendar" size={12} />
+                    {post.date}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>
+                  <Button variant="ghost" size="sm" className={`text-${post.color}-600 hover:text-${post.color}-700 p-0 h-auto font-semibold`}>
+                    Читать далее
+                    <Icon name="ArrowRight" size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline" className="border-indigo-300 hover:bg-indigo-50">
+              <Icon name="BookOpen" size={20} className="mr-2" />
+              Все статьи блога
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" className="py-20 px-4 bg-gradient-to-r from-pink-50 to-purple-50">
         <div className="container mx-auto">
           <div className="text-center mb-12 animate-fade-in">
             <Badge className="mb-4 bg-pink-500 text-white">Фотографии</Badge>
@@ -545,7 +657,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4 bg-gradient-to-r from-orange-100 to-pink-100">
+      <section id="contact" className="py-20 px-4">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12 animate-fade-in">
             <Badge className="mb-4 bg-orange-500 text-white">Связь</Badge>
